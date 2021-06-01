@@ -1,6 +1,7 @@
 # importing the module
 import tweepy
 import auth
+import Spotify
 
 def main(message):
     # authentication of consumer key and secret
@@ -14,13 +15,9 @@ def main(message):
     api.update_status(status=message)
 
 if __name__ == "__main__":
-    temp=True
-    while temp==True:
-        message=input("Enter message here (type done to finish tweeting): ")
-        if len(message)>279:
-            print("too long try again")
-        elif message=="done":
-            print("done tweeting")
-            temp=False
-        else:
+    message=""
+    while True:
+        oldMess=message
+        message=Spotify.getSong()
+        if(message!=oldMess):
             main(message)
