@@ -28,15 +28,15 @@ def getSong():
         # For future versions: token=token_info
 
     sp = spotipy.Spotify(auth=token)
-
-    current_song = sp.currently_playing()
-
-    song_name = current_song['item']['name']
-    song_artist = current_song['item']['artists'][0]['name']
-    print('yay')
-    now this
-    to_return = "Now playing \"" + song_name + "\" by " + song_artist
-    return to_return
+    try:
+        current_song = sp.currently_playing()
+        song_name = current_song['item']['name']
+        song_artist = current_song['item']['artists'][0]['name']
+        to_return = "Now playing \"" + song_name + "\" by " + song_artist
+        return to_return
+    except TypeError:
+        print("Nothing is playing")
+        return False
 
 
 def refresh():

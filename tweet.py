@@ -19,5 +19,7 @@ if __name__ == "__main__":
     while True:
         oldMess=message
         message=Spotify.getSong()
-        if(message!=oldMess):
+        if(message==False):
+            break
+        elif(message!=oldMess):
             main(message)
