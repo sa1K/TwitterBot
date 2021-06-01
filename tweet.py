@@ -21,6 +21,7 @@ if __name__ == "__main__":
     while True:
         oldMess = message
         message = Spotify.getSong()
+
         #if nothing is playing
         if (message == False):
             break
