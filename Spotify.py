@@ -33,6 +33,7 @@ def getSong():
 
     song_name = current_song['item']['name']
     song_artist = current_song['item']['artists'][0]['name']
+    print('yay')
     to_return = "Now playing \"" + song_name + "\" by " + song_artist
     return to_return
 
