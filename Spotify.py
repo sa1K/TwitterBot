@@ -31,8 +31,18 @@ def getSong():
     try:
         current_song = sp.currently_playing()
         song_name = current_song['item']['name']
+        i=0
+        allArtists=[]
+        while True:
+            try:
+                allArtists.append(current_song['item']['artists'][i]['name'])
+                i=i+1
+            except IndexError:
+                break
         song_artist = current_song['item']['artists'][0]['name']
-        to_return = "Now playing \"" + song_name + "\" by " + song_artist
+        joined_string = ", ".join(allArtists)
+        #print("Now playing \"" + song_name + "\" by " + joined_string)
+        to_return = "Now playing \"" + song_name + "\" by " + joined_string
         return to_return
     except TypeError:
         print("Nothing is playing")
@@ -47,6 +57,3 @@ def refresh():
         token = token_info['access_token']
         sp = spotipy.Spotify(auth=token)
 
-
-if __name__ == "__main__":
-    print(getSong())

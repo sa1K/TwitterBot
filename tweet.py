@@ -3,6 +3,7 @@ import tweepy
 import auth
 import Spotify
 
+
 def main(message):
     # authentication of consumer key and secret
     authorization = tweepy.OAuthHandler(auth.consumer_key, auth.consumer_secret)
@@ -14,12 +15,14 @@ def main(message):
     # update the status
     api.update_status(status=message)
 
+
 if __name__ == "__main__":
-    message=""
+    message = ""
     while True:
-        oldMess=message
-        message=Spotify.getSong()
-        if(message==False):
+        oldMess = message
+        message = Spotify.getSong()
+        if (message == False):
             break
-        elif(message!=oldMess):
+        elif (message != oldMess):
+            print(message)
             main(message)
