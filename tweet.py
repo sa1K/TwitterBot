@@ -3,7 +3,7 @@ import tweepy
 import auth
 import Spotify
 
-
+#tweets message
 def main(message):
     # authentication of consumer key and secret
     authorization = tweepy.OAuthHandler(auth.consumer_key, auth.consumer_secret)
@@ -21,8 +21,10 @@ if __name__ == "__main__":
     while True:
         oldMess = message
         message = Spotify.getSong()
+        #if nothing is playing
         if (message == False):
             break
+        #if the song has changed
         elif (message != oldMess):
             try:
                 print(message)
