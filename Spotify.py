@@ -39,9 +39,7 @@ def getSong():
                 i=i+1
             except IndexError:
                 break
-        song_artist = current_song['item']['artists'][0]['name']
         joined_string = ", ".join(allArtists)
-        #print("Now playing \"" + song_name + "\" by " + joined_string)
         to_return = "Now playing \"" + song_name + "\" by " + joined_string
         return to_return
     except TypeError:
