@@ -24,5 +24,11 @@ if __name__ == "__main__":
         if (message == False):
             break
         elif (message != oldMess):
-            print(message)
-            main(message)
+            try:
+                print(message)
+                main(message)
+            except tweepy.error.TweepError as e:
+                if e.api_code==187:
+                    print("this was the same song that you were playing last time you ran the program")
+                else:
+                    raise e
