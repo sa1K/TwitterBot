@@ -53,4 +53,3 @@ def getSong():
         print("Nothing is playing")
         return False
 
-
