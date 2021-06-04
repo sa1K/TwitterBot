@@ -12,9 +12,9 @@ token_info = sp_oauth.get_cached_token()
 
 
 def getSong():
-    #gets the token from the cache if it exists
+    # gets the token from the cache if it exists
     token_info = sp_oauth.get_cached_token()
-    #if it doesn't exist get the token
+    # if it doesn't exist get the token
     if not token_info:
         auth_url = sp_oauth.get_authorize_url(state=True)
         print(auth_url)
@@ -29,27 +29,26 @@ def getSong():
         token = token_info['access_token']
         # For future versions: token=token_info
 
-    #access the spotify api
+    # access the spotify api
     sp = spotipy.Spotify(auth=token)
     try:
-        #gets the current song
+        # gets the current song
         current_song = sp.currently_playing()
         song_name = current_song['item']['name']
-        i=0
-        allArtists=[]
-        #gets all the artisits on the song
+        i = 0
+        allArtists = []
+        # gets all the artists on the song
         while True:
             try:
                 allArtists.append(current_song['item']['artists'][i]['name'])
-                i=i+1
+                i = i + 1
             except IndexError:
                 break
         joined_string = ", ".join(allArtists)
-        #returns what is being played and who is the artist
+        # returns what is being played and who is the artist
         to_return = "Now playing \"" + song_name + "\" by " + joined_string
         return to_return
-    #handles nothing being played
+    # handles nothing being played
     except TypeError:
         print("Nothing is playing")
         return False
-
