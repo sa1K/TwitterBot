@@ -3,7 +3,7 @@ import SpotAuth
 
 CLIENT_ID = SpotAuth.clientID
 CLIENT_SECRET = SpotAuth.clientSecret
-username = SpotAuth.username
+username = input('Enter your spotify username: ')
 scope = "user-read-currently-playing"
 redirect_uri = SpotAuth.redirect_uri
 sp_oauth = spotipy.oauth2.SpotifyOAuth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=redirect_uri,

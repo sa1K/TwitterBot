@@ -1,4 +1,3 @@
-# importing the modules
 import tweepy
 import auth
 import Spotify
